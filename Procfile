@@ -1,1 +1,1 @@
-web: python saliva_bot.py
+worker: python saliva_bot.py
