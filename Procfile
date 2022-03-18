@@ -1,1 +1,1 @@
-worker: python saliva_bot.py
+worker: python test.py
