@@ -27,6 +27,8 @@ client = discord.Client()
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
+    await client.get_channel(937361332896935976).send("bot is online")
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
