@@ -32,6 +32,14 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    if message.content.startswith('!!mirror'):
+        await message.channel.send(message.content.removeprefix('!!mirror '))
+
+    if message.content.startswith('!!bonk'):
+        await message.channel.send("https://cdn.discordapp.com/attachments/922487474494779392/954040211996811304/image0.jpg")
+
+    if message.content.startswith('!!promote'):
+        await message.channel.send('Congrats! You\'ve been promoted to owner! Your problem now bye')
     role = discord.utils.find(lambda r: r.id == owner_role_id, message.guild.roles)
 
     if role in message.author.roles:
