@@ -1,1 +1,0 @@
-worker: python saliva_bot.py

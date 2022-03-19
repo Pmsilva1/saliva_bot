@@ -35,7 +35,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('!!mirror'):
-        await message.channel.send(message.content.removeprefix('!!mirror '))
+        await message.channel.send(message.content[8:])
 
     if message.content.startswith('!!bonk'):
         await message.channel.send("https://cdn.discordapp.com/attachments/922487474494779392/954040211996811304/image0.jpg")
