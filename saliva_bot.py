@@ -1,12 +1,16 @@
 #from dotenv import load_dotenv
 #load_dotenv()
 
+#---------Imports-----------#
 import os
 token = os.environ.get("saliva_token")
 owner_role_id = int(os.environ.get("owner_role_id"))
 import discord
-
 import json
+
+#-------------Quart--------#
+from quart import Quart
+app = Quart(__name__)
 
 #def make_embed(message):
     #msg_json = json.loads(message)
@@ -27,7 +31,7 @@ client = discord.Client()
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
-    await client.get_channel(937361332896935976).send("bot is online")
+    #await client.get_channel(937361332896935976).send("bot is online")
 
 @client.event
 async def on_message(message):
@@ -39,6 +43,9 @@ async def on_message(message):
 
     if message.content.startswith('!!bonk'):
         await message.channel.send("https://cdn.discordapp.com/attachments/922487474494779392/954040211996811304/image0.jpg")
+  
+    if message.content.startswith("!!yoshibonk"):
+      await message.channel.send("https://tenor.com/view/bonk-gif-19410756")
 
     if message.content.startswith('!!promote'):
         await message.channel.send('Congrats! You\'ve been promoted to owner! Your problem now bye')
@@ -62,4 +69,6 @@ async def on_message(message):
             embedVar = discord.Embed.from_dict(test)
             print(embedVar)
             await message.channel.send(embed=embedVar)
+
+client.loop.create_task(app.run_task('0.0.0.0', 8080))
 client.run(token)
